@@ -1,0 +1,10 @@
+add_icu_perf_test(usetperf)
+target_sources(usetperf
+  PRIVATE
+  bitset.cpp
+  usetperf.cpp
+)
+target_link_libraries(usetperf
+  PRIVATE
+  ctestfw
+)

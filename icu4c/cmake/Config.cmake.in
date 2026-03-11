@@ -1,0 +1,11 @@
+@PACKAGE_INIT@
+
+set(_ICU_supported_components data i18n io le lx test tu uc)
+
+foreach(_comp ${ICU_FIND_COMPONENTS})
+  if (NOT _comp IN_LIST _ICU_supported_components)
+    set(ICU_FOUND False)
+    set(ICU_NOT_FOUND_MESSAGE "Unsupported component: ${_comp}")
+  endif()
+  include("${CMAKE_CURRENT_LIST_DIR}/ICU${_comp}Targets.cmake")
+endforeach()

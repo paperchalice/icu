@@ -1,0 +1,9 @@
+add_icu_perf_test(ustrperf)
+target_sources(ustrperf
+  PRIVATE
+  stringperf.cpp
+)
+target_link_libraries(ustrperf
+  PRIVATE
+  ctestfw
+)

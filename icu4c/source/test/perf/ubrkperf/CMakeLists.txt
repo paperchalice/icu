@@ -1,0 +1,9 @@
+add_icu_perf_test(ubrkperf)
+target_sources(ubrkperf
+  PRIVATE
+  ubrkperf.cpp
+)
+target_link_libraries(ubrkperf
+  PRIVATE
+  ctestfw
+)

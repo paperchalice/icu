@@ -1,0 +1,9 @@
+add_icu_perf_test(utrie2perf)
+target_sources(utrie2perf
+  PRIVATE
+  utrie2perf.cpp
+)
+target_link_libraries(utrie2perf
+  PRIVATE
+  ctestfw
+)

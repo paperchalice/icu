@@ -1,0 +1,9 @@
+add_icu_perf_test(ucnvavailperf)
+target_sources(ucnvavailperf
+  PRIVATE
+  ucnvavailperf.cpp
+)
+target_link_libraries(ucnvavailperf
+  PRIVATE
+  ctestfw
+)

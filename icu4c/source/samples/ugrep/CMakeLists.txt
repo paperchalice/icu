@@ -1,0 +1,9 @@
+add_icu_executable(ugrep)
+target_sources(ugrep
+  PRIVATE
+  ugrep.cpp
+)
+target_link_libraries(ugrep
+  PRIVATE
+  in
+)

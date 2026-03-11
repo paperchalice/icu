@@ -1,0 +1,9 @@
+add_icu_executable(icuswap)
+target_sources(icuswap
+  PRIVATE
+  icuswap.cpp
+)
+target_link_libraries(icuswap
+  PRIVATE
+  tu
+)

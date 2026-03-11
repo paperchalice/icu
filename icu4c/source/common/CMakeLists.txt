@@ -1,0 +1,413 @@
+set(bidi_srcs
+  ubidi.cpp
+  ubidi_props.cpp
+  ubidiln.cpp
+  ubiditransform.cpp
+  ubidiwrt.cpp
+  ushape.cpp
+)
+
+set(break_iteration_srcs
+  brkeng.cpp
+  brkiter.cpp
+  dictbe.cpp
+  dictionarydata.cpp
+  filteredbrk.cpp
+  lstmbe.cpp
+  mlbe.cpp
+  rbbi.cpp
+  rbbi_cache.cpp
+  rbbidata.cpp
+  rbbinode.cpp
+  rbbirb.cpp
+  rbbiscan.cpp
+  rbbisetb.cpp
+  rbbistbl.cpp
+  rbbitblb.cpp
+  ubrk.cpp
+)
+
+set(collation_srcs
+  ucol_swp.cpp
+)
+
+set(collections_srcs
+  bytestrie.cpp
+  bytestriebuilder.cpp
+  bytestrieiterator.cpp
+  pluralmap.cpp
+  propsvec.cpp
+  stringtriebuilder.cpp
+  uarrsort.cpp
+  ucharstrie.cpp
+  ucharstriebuilder.cpp
+  ucharstrieiterator.cpp
+  ucptrie.cpp
+  uenum.cpp
+  uhash.cpp
+  uhash_us.cpp
+  ulist.cpp
+  umutablecptrie.cpp
+  unifiedcache.cpp
+  ustack.cpp
+  ustrenum.cpp
+  utrie.cpp
+  utrie2.cpp
+  utrie2_builder.cpp
+  utrie_swap.cpp
+  uvector.cpp
+  uvectr32.cpp
+  uvectr64.cpp
+)
+
+set(configuration_srcs
+  errorcode.cpp
+  icudataver.cpp
+  locmap.cpp
+  putil.cpp
+  umath.cpp
+  umutex.cpp
+  utrace.cpp
+  utypes.cpp
+  wintz.cpp
+)
+
+set(conversion_srcs
+  ucnv.cpp
+  ucnv2022.cpp
+  ucnv_bld.cpp
+  ucnv_cb.cpp
+  ucnv_cnv.cpp
+  ucnv_ct.cpp
+  ucnv_err.cpp
+  ucnv_ext.cpp
+  ucnv_io.cpp
+  ucnv_lmb.cpp
+  ucnv_set.cpp
+  ucnv_u16.cpp
+  ucnv_u32.cpp
+  ucnv_u7.cpp
+  ucnv_u8.cpp
+  ucnvbocu.cpp
+  ucnvdisp.cpp
+  ucnvhz.cpp
+  ucnvisci.cpp
+  ucnvlat1.cpp
+  ucnvmbcs.cpp
+  ucnvscsu.cpp
+  ucnvsel.cpp
+)
+
+set(data_and_memory_srcs
+  cmemory.cpp
+  restrace.cpp
+  sharedobject.cpp
+  ucln_cmn.cpp
+  ucmndata.cpp
+  udata.cpp
+  udatamem.cpp
+  udataswp.cpp
+  uinit.cpp
+  umapfile.cpp
+  uobject.cpp
+)
+
+set(formatting_srcs
+  dtintrv.cpp
+  locdspnm.cpp
+  messagepattern.cpp
+  parsepos.cpp
+  simpleformatter.cpp
+  static_unicode_sets.cpp
+  ucurr.cpp
+  ustrfmt.cpp
+  util.cpp
+  util_props.cpp
+)
+
+set(idna_srcs
+  punycode.cpp
+  uidna.cpp
+  uts46.cpp
+)
+
+set(locales_and_resources_srcs
+  localebuilder.cpp
+  localematcher.cpp
+  localeprioritylist.cpp
+  locavailable.cpp
+  locbased.cpp
+  locdispnames.cpp
+  locdistance.cpp
+  locid.cpp
+  loclikely.cpp
+  loclikelysubtags.cpp
+  locresdata.cpp
+  locutil.cpp
+  lsr.cpp
+  resbund.cpp
+  resbund_cnv.cpp
+  resource.cpp
+  ucat.cpp
+  uloc.cpp
+  uloc_keytype.cpp
+  uloc_tag.cpp
+  ulocale.cpp
+  ulocbuilder.cpp
+  ures_cnv.cpp
+  uresbund.cpp
+  uresdata.cpp
+)
+
+set(normalization_srcs
+  caniter.cpp
+  filterednormalizer2.cpp
+  loadednormalizer2impl.cpp
+  normalizer2.cpp
+  normalizer2impl.cpp
+  normlzr.cpp
+  unorm.cpp
+  unormcmp.cpp
+)
+
+set(properties_and_sets_srcs
+  bmpset.cpp
+  characterproperties.cpp
+  emojiprops.cpp
+  patternprops.cpp
+  propname.cpp
+  ruleiter.cpp
+  ucase.cpp
+  uchar.cpp
+  unames.cpp
+  unifilt.cpp
+  unifunct.cpp
+  uniset.cpp
+  uniset_closure.cpp
+  uniset_props.cpp
+  unisetspan.cpp
+  uprops.cpp
+  usc_impl.cpp
+  uscript.cpp
+  uscript_props.cpp
+  uset.cpp
+  uset_props.cpp
+  usetiter.cpp
+)
+
+set(registration_srcs
+  icuplug.cpp
+  serv.cpp
+  servlk.cpp
+  servlkf.cpp
+  servls.cpp
+  servnotf.cpp
+  servrbf.cpp
+  servslkf.cpp
+)
+
+set(sprep_srcs
+  usprep.cpp
+)
+
+set(strings_srcs
+  appendable.cpp
+  bytesinkutil.cpp
+  bytestream.cpp
+  chariter.cpp
+  charstr.cpp
+  cstr.cpp
+  cstring.cpp
+  cwchar.cpp
+  edits.cpp
+  fixedstring.cpp
+  schriter.cpp
+  stringpiece.cpp
+  ucasemap.cpp
+  ucasemap_titlecase_brkiter.cpp
+  uchriter.cpp
+  uinvchar.cpp
+  uiter.cpp
+  unistr.cpp
+  unistr_case.cpp
+  unistr_case_locale.cpp
+  unistr_cnv.cpp
+  unistr_props.cpp
+  unistr_titlecase_brkiter.cpp
+  ustr_cnv.cpp
+  ustr_titlecase_brkiter.cpp
+  ustr_wcs.cpp
+  ustrcase.cpp
+  ustrcase_locale.cpp
+  ustring.cpp
+  ustrtrns.cpp
+  utext.cpp
+  utf_impl.cpp
+)
+
+add_icu_library(uc
+  EXPORT ICUucTargets
+)
+install_icu_export(ICUucTargets)
+target_sources(uc
+  PRIVATE
+  ${bidi_srcs}
+  ${break_iteration_srcs}
+  ${collation_srcs}
+  ${collections_srcs}
+  ${configuration_srcs}
+  ${conversion_srcs}
+  ${data_and_memory_srcs}
+  ${formatting_srcs}
+  ${idna_srcs}
+  ${locales_and_resources_srcs}
+  ${normalization_srcs}
+  ${properties_and_sets_srcs}
+  ${registration_srcs}
+  ${sprep_srcs}
+  ${strings_srcs}
+)
+
+target_sources(uc
+  PUBLIC
+  FILE_SET HEADERS
+  FILES
+  unicode/appendable.h
+  unicode/brkiter.h
+  unicode/bytestream.h
+  unicode/bytestrie.h
+  unicode/bytestriebuilder.h
+  unicode/caniter.h
+  unicode/casemap.h
+  unicode/char16ptr.h
+  unicode/chariter.h
+  unicode/dbbi.h
+  unicode/docmain.h
+  unicode/dtintrv.h
+  unicode/edits.h
+  unicode/enumset.h
+  unicode/errorcode.h
+  unicode/filteredbrk.h
+  unicode/icudataver.h
+  unicode/icuplug.h
+  unicode/idna.h
+  unicode/localebuilder.h
+  unicode/localematcher.h
+  unicode/localpointer.h
+  unicode/locdspnm.h
+  unicode/locid.h
+  unicode/messagepattern.h
+  unicode/normalizer2.h
+  unicode/normlzr.h
+  unicode/parseerr.h
+  unicode/parsepos.h
+  unicode/platform.h
+  unicode/ptypes.h
+  unicode/putil.h
+  unicode/rbbi.h
+  unicode/rep.h
+  unicode/resbund.h
+  unicode/schriter.h
+  unicode/simpleformatter.h
+  unicode/std_string.h
+  unicode/strenum.h
+  unicode/stringoptions.h
+  unicode/stringpiece.h
+  unicode/stringtriebuilder.h
+  unicode/symtable.h
+  unicode/ubidi.h
+  unicode/ubiditransform.h
+  unicode/ubrk.h
+  unicode/ucasemap.h
+  unicode/ucat.h
+  unicode/uchar.h
+  unicode/ucharstrie.h
+  unicode/ucharstriebuilder.h
+  unicode/uchriter.h
+  unicode/uclean.h
+  unicode/ucnv_cb.h
+  unicode/ucnv_err.h
+  unicode/ucnv.h
+  unicode/ucnvsel.h
+  unicode/uconfig.h
+  unicode/ucpmap.h
+  unicode/ucptrie.h
+  unicode/ucurr.h
+  unicode/udata.h
+  unicode/udisplaycontext.h
+  unicode/uenum.h
+  unicode/uidna.h
+  unicode/uiter.h
+  unicode/uldnames.h
+  unicode/uloc.h
+  unicode/ulocale.h
+  unicode/ulocbuilder.h
+  unicode/umachine.h
+  unicode/umisc.h
+  unicode/umutablecptrie.h
+  unicode/unifilt.h
+  unicode/unifunct.h
+  unicode/unimatch.h
+  unicode/uniset.h
+  unicode/unistr.h
+  unicode/unorm.h
+  unicode/unorm2.h
+  unicode/uobject.h
+  unicode/urename.h
+  unicode/urep.h
+  unicode/ures.h
+  unicode/uscript.h
+  unicode/uset.h
+  unicode/usetiter.h
+  unicode/ushape.h
+  unicode/usprep.h
+  unicode/ustring.h
+  unicode/ustringtrie.h
+  unicode/utext.h
+  unicode/utf_old.h
+  unicode/utf.h
+  unicode/utf16.h
+  unicode/utf32.h
+  unicode/utf8.h
+  unicode/utfiterator.h
+  unicode/utfstring.h
+  unicode/utrace.h
+  unicode/utypes.h
+  unicode/uvernum.h
+  unicode/uversion.h
+)
+
+target_compile_definitions(uc
+  PRIVATE U_COMMON_IMPLEMENTATION
+)
+target_link_libraries(uc
+  PUBLIC data
+)
+
+if(NOT BUILD_SHARED_LIBS)
+  target_compile_definitions(uc
+    PUBLIC U_STATIC_IMPLEMENTATION
+    PRIVATE
+    $<$<CONFIG:Debug>:RBBI_DEBUG>
+  )
+
+  if(WIN32)
+    target_compile_definitions(uc
+      PUBLIC U_PLATFORM_USES_ONLY_WIN32_API=1
+    )
+  endif()
+endif()
+
+target_compile_definitions(uc
+  PUBLIC
+  UCONFIG_ENABLE_PLUGINS=$<BOOL:${ICU_ENABLE_PLUGINS}>
+  U_ENABLE_DYLOAD=$<NOT:$<BOOL:${ICU_DISABLE_DYLOAD}>>
+  U_DEFAULT_SHOW_DRAFT=$<NOT:$<BOOL:${ICU_DISABLE_DRAFT}>>
+  U_ENABLE_TRACING=$<BOOL:${ICU_ENABLE_TRACING}>
+  U_DISABLE_RENAMING=$<BOOL:${ICU_DISABLE_RENAMING}>
+  ICU_ENABLE_AUTO_CLEANUP=$<NOT:$<BOOL:${ICU_ENABLE_AUTO_CLEANUP}>>
+)
+
+source_group(bidi
+  REGULAR_EXPRESSION ubidi.*.cpp
+)

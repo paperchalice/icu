@@ -88,6 +88,12 @@ def run_helper(request, common_vars, platform, tool_dir, verbose, tool_cfg=None,
             TOOL = request.tool.name,
             **common_vars
         )
+    elif platform == "cmake":
+        cmd_template = "{TOOL_DIR}/{TOOL} {{ARGS}}".format(
+            TOOL_DIR = tool_dir,
+            TOOL = request.tool.name,
+            **common_vars
+        )
     else:
         raise ValueError("Unknown platform: %s" % platform)
 
@@ -121,10 +127,11 @@ def run_helper(request, common_vars, platform, tool_dir, verbose, tool_cfg=None,
 
 def run_shell_command(command_line, platform, verbose):
     changed_windows_comspec = False
+    import platform as pf
     # If the command line length on Windows exceeds the absolute maximum that CMD supports (8191), then
     # we temporarily switch over to use PowerShell for the command, and then switch back to CMD.
     # We don't want to use PowerShell for everything though, as it tends to be slower.
-    if (platform == "windows"):
+    if (platform == "windows" or (platform == "cmake" and pf.system() == "Windows")):
         previous_comspec = os.environ["COMSPEC"]
         # Add 7 to the length for the argument /c with quotes.
         # For example:  C:\WINDOWS\system32\cmd.exe /c "<command_line>"

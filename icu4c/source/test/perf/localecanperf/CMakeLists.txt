@@ -1,0 +1,9 @@
+add_icu_perf_test(localecanperf)
+target_sources(localecanperf
+  PRIVATE
+  localecanperf.cpp
+)
+target_link_libraries(localecanperf
+  PRIVATE
+  ctestfw
+)

@@ -1,0 +1,19 @@
+add_icu_executable(escapesrc)
+target_sources(escapesrc
+  PRIVATE
+  escapesrc.cpp
+)
+target_link_libraries(escapesrc
+  PRIVATE
+  tu
+)
+
+add_icu_executable(tblgen)
+target_sources(tblgen
+  PRIVATE
+  tblgen.cpp
+)
+target_link_libraries(tblgen
+  PRIVATE
+  tu
+)

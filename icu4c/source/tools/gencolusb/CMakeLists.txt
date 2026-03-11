@@ -1,0 +1,19 @@
+add_icu_executable(extract_unsafe_backwards)
+target_sources(extract_unsafe_backwards
+  PRIVATE
+  extract_unsafe_backwards.cpp
+)
+target_link_libraries(extract_unsafe_backwards
+  PRIVATE
+  tu
+)
+
+add_icu_executable(verify_uset)
+target_sources(verify_uset
+  PRIVATE
+  verify_uset.cpp
+)
+target_link_libraries(verify_uset
+  PRIVATE
+  tu
+)

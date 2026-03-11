@@ -1,0 +1,9 @@
+add_icu_perf_test(dicttrieperf)
+target_sources(dicttrieperf
+  PRIVATE
+  dicttrieperf.cpp
+)
+target_link_libraries(dicttrieperf
+  PRIVATE
+  ctestfw
+)

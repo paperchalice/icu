@@ -1,0 +1,10 @@
+add_icu_executable(scrptrun)
+target_sources(scrptrun
+  PRIVATE
+  scrptrun.cpp
+  srtest.cpp
+)
+target_link_libraries(scrptrun
+  PRIVATE
+  uc
+)

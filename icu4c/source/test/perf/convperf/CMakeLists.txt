@@ -1,0 +1,9 @@
+add_icu_perf_test(convperf)
+target_sources(convperf
+  PRIVATE
+  convperf.cpp
+)
+target_link_libraries(convperf
+  PRIVATE
+  ctestfw
+)

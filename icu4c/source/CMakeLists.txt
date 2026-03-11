@@ -1,0 +1,25 @@
+include(BuildData)
+
+add_subdirectory(common)
+add_subdirectory(extra)
+add_subdirectory(i18n)
+add_subdirectory(tools)
+
+if(ICU_IS_BOOTSTRAPPING)
+  add_subdirectory(stubdata)
+else()
+  add_subdirectory(config)
+  add_subdirectory(data)
+  add_subdirectory(io)
+  add_subdirectory(layoutex)
+  add_subdirectory(samples)
+  add_subdirectory(test)
+
+  if(ICU_WITH_DATA_PACKAGING STREQUAL "archive")
+    add_subdirectory(stubdata)
+  endif()
+
+  if()
+    add_subdirectory(layoutex)
+  endif()
+endif()

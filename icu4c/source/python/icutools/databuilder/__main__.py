@@ -63,7 +63,7 @@ arg_group_required = flag_parser.add_argument_group("required arguments")
 arg_group_required.add_argument(
     "--mode",
     help = "What to do with the generated rules.",
-    choices = ["gnumake", "unix-exec", "windows-exec", "bazel-exec"],
+    choices = ["gnumake", "unix-exec", "windows-exec", "bazel-exec", "cmake-exec"],
     required = True
 )
 
@@ -346,6 +346,15 @@ def main(argv):
     elif args.mode == "bazel-exec":
         return common_exec.run(
             platform = "bazel",
+            build_dirs = build_dirs,
+            requests = requests,
+            common_vars = common,
+            tool_dir = args.tool_dir,
+            verbose = args.verbose,
+        )
+    elif args.mode == "cmake-exec":
+        return common_exec.run(
+            platform = "cmake",
             build_dirs = build_dirs,
             requests = requests,
             common_vars = common,

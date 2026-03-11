@@ -1,0 +1,9 @@
+add_icu_executable(strsrch)
+target_sources(strsrch
+  PRIVATE
+  strsrch.cpp
+)
+target_link_libraries(strsrch
+  PRIVATE
+  in
+)

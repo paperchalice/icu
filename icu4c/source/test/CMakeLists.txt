@@ -1,0 +1,15 @@
+if(NOT BUILD_TESTING)
+  return()
+endif()
+
+find_package(Perl)
+
+set(CMAKE_FOLDER test)
+add_subdirectory(cintltst)
+add_subdirectory(intltest)
+add_subdirectory(iotest)
+add_subdirectory(letest)
+add_subdirectory(perf)
+add_subdirectory(testdata)
+add_subdirectory(testmap)
+add_subdirectory(thaitest)

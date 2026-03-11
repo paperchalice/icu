@@ -1,0 +1,9 @@
+add_icu_executable(coll)
+target_sources(coll
+  PRIVATE
+  coll.cpp
+)
+target_link_libraries(coll
+  PRIVATE
+  in
+)

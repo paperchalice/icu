@@ -1,0 +1,9 @@
+add_icu_executable(icuinfo)
+target_sources(icuinfo
+  PRIVATE
+  icuinfo.cpp
+)
+target_link_libraries(icuinfo
+  PRIVATE
+  tu
+)

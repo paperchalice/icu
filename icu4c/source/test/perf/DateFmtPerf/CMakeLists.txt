@@ -1,0 +1,9 @@
+add_icu_perf_test(DateFmtPerf)
+target_sources(DateFmtPerf
+  PRIVATE
+  DateFmtPerf.cpp
+)
+target_link_libraries(DateFmtPerf
+  PRIVATE
+  ctestfw
+)

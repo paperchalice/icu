@@ -1,0 +1,11 @@
+add_icu_executable(translit)
+target_sources(translit
+  PRIVATE
+  answers/unaccent.cpp
+  main.cpp
+  util.cpp
+)
+target_link_libraries(translit
+  PRIVATE
+  in
+)

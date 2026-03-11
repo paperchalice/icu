@@ -1,0 +1,9 @@
+add_icu_perf_test(utfperf)
+target_sources(utfperf
+  PRIVATE
+  utfperf.cpp
+)
+target_link_libraries(utfperf
+  PRIVATE
+  ctestfw
+)
