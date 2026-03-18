@@ -26,7 +26,7 @@ option(ICU_DISABLE_RENAMING "do not add a version suffix to symbols" OFF)
 option(ICU_ENABLE_TRACING "enable function and data tracing" OFF)
 option(ICU_ENABLE_PLUGINS "enable plugins" OFF)
 option(ICU_DISABLE_DYLOAD "disable dynamic loading" OFF)
-# TODO: option(ICU_ENABLE_RPATH "use rpath when linking default is only if necessary" OFF)
+option(ICU_ENABLE_RPATH "use rpath when linking default is only if necessary" OFF)
 # TODO: option(ICU_ENABLE_WEAK_THREADS "weakly reference the threading library" OFF)
 option(ICU_DISABLE_EXTRAS "do not build ICU extras" OFF)
 option(ICU_DISABLE_ICUIO "do not build ICU's icuio library" OFF)
@@ -35,6 +35,7 @@ option(ICU_DISABLE_TOOLS "do not build ICU's tools" OFF)
 option(ICU_ENABLE_FUZZER "build ICU's fuzzer test targets" OFF)
 option(ICU_DISABLE_SAMPLES "do not build ICU samples" OFF)
 option(ICU_INSTALL_CMAKE_EXPORT "install cmake package (conflict with FindICU!)" OFF)
+option(ICU_USE_EMBED "use #embed if possible" OFF)
 
 # option(ICU_WITH_LIBRARY_BITS "specify how many bits to use for the library (32, 64, 64else32, nochange) default=nochange" nochange)
 # set_property(CACHE ICU_WITH_LIBRARY_BITS PROPERTY STRINGS "32;64;64else32;nochange")
@@ -51,6 +52,9 @@ set(CACHE{ICU_WITH_LIBRARY_SUFFIX} TYPE STRING HELP "tag a suffix to the library
 # internal options
 option(ICU_IS_BOOTSTRAPPING "is this build for bootstrapping" OFF)
 mark_as_advanced(FORCE ICU_IS_BOOTSTRAPPING)
+
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ${ICU_ENABLE_RPATH})
+
 
 if(ICU_IS_BOOTSTRAPPING)
   set(CACHE{BUILD_SHARED_LIBS} FORCE VALUE OFF)

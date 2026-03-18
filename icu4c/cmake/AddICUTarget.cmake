@@ -12,11 +12,7 @@ function(add_prefix_suffix tgt)
   set_target_properties(${tgt}
     PROPERTIES
     OUTPUT_NAME
-    "icu${output_name}${ICU_WITH_LIBRARY_SUFFIX}${PROJECT_VERSION_MAJOR}"
-    ARCHIVE_OUTPUT_NAME
     "icu${output_name}${ICU_WITH_LIBRARY_SUFFIX}"
-    RUNTIME_OUTPUT_NAME
-    "icu${output_name}${ICU_WITH_LIBRARY_SUFFIX}${PROJECT_VERSION_MAJOR}"
   )
 endfunction()
 
@@ -42,6 +38,11 @@ function(add_icu_target type name)
 
   if(type STREQUAL "LIB")
     add_library(${name} ${arg_UNPARSED_ARGUMENTS})
+    set_target_properties(${name}
+      PROPERTIES DLL_NAME_WITH_SOVERSION ON
+      VERSION ${PROJECT_VERSION}
+      SOVERSION ${PROJECT_VERSION_MAJOR}
+    )
   elseif(type STREQUAL "TEST")
     add_executable(${name})
     add_test(NAME ${name}
@@ -51,11 +52,6 @@ function(add_icu_target type name)
   else()
     add_executable(${name})
   endif()
-
-  set_target_properties(${name} PROPERTIES
-    VERSION ${PROJECT_VERSION}
-    SOVERSION ${PROJECT_VERSION_MAJOR}
-  )
 
   if(arg_SOURCES)
     target_sources(${name}

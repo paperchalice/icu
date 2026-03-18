@@ -1,3 +1,7 @@
+if(NOT ICU_INSTALL_CMAKE_EXPORT)
+  return()
+endif()
+
 include(CMakePackageConfigHelpers)
 
 write_basic_package_version_file(

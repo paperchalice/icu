@@ -3,7 +3,7 @@
 
 alignas(16) U_EXPORT const unsigned char U_ICUDATA_ENTRY_POINT[] = {
 #if HAVE_EMBED
-  // TODO: use #embed here
+#embed ICU_DAT_FILE
 #else
 #include "data.inc"
 #endif

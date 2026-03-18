@@ -45,26 +45,50 @@ if(NOT ICU_WITH_DATA_PACKAGING STREQUAL "archive")
   endif()
   add_icu_library(${tgt_name} ${lib_kind} EXPORT ICU${tgt_name}Targets)
   add_library(${alias_name} ALIAS ${tgt_name})
+  if(ICU_USE_EMBED AND ${CMAKE_C_STANDARD_LATEST} GREATER_EQUAL 23)
+    set(HAVE_EMBED ON)
+  endif()
   target_sources(${tgt_name}
     PRIVATE
     data.c
   )
-  target_sources(${tgt_name}
-    PRIVATE
-    FILE_SET HEADERS
-    BASE_DIRS ${CMAKE_CURRENT_BINARY_DIR}
-    FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/data.inc
-  )
+
+  if(HAVE_EMBED)
+    set_target_properties(${tgt_name}
+      PROPERTIES C_STANDARD 23 
+    )
+    # FIXME: find a better way to add file level dependency,
+    # OBJECT_DEPENDS doesn't work with vs and xcode
+    target_sources(${tgt_name}
+      PRIVATE
+      FILE_SET HEADERS
+      FILES
+      ${obj_dep}
+    )
+  else()
+    target_sources(${tgt_name}
+      PRIVATE
+      FILE_SET HEADERS
+      BASE_DIRS ${CMAKE_CURRENT_BINARY_DIR}
+      FILES
+      ${CMAKE_CURRENT_BINARY_DIR}/data.inc
+    )
+  endif()
+
   install_icu_export(ICU${tgt_name}Targets)
   target_include_directories(${tgt_name}
     PRIVATE
     ../common
     ${CMAKE_CURRENT_BINARY_DIR}
   )
+  target_compile_definitions(${tgt_name}
+    PRIVATE
+    HAVE_EMBED=$<BOOL:${HAVE_EMBED}>
+    ICU_DAT_FILE=\"${obj_dep}\"
+  )
 else()
   install(FILES
-    ${CMAKE_CURRENT_LIST_DIR}/out/tmp/${ICUPKG}.dat
+    ${CMAKE_CURRENT_LIST_DIR}/out/build/${ICUPKG}/${ICUPKG}.dat
     COMPONENT Runtime
     DESTINATION ${CMAKE_INSTALL_DATADIR}/icu${ICU_WITH_LIBRARY_SUFFIX}/${PROJECT_VERSION}
   )
