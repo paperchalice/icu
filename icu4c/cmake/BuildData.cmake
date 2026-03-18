@@ -171,9 +171,7 @@ function(build_icu_data_pkg name)
     endif()
   endforeach()
 
-  find_program(PKGDATA pkgdata
-    HINTS ${ICU_NATIVE_TOOL_DIR}
-  )
+  set(PKGDATA ${ICU_NATIVE_TOOL_DIR}/pkgdata${CMAKE_HOST_EXECUTABLE_SUFFIX})
 
   if(WIN32)
     set(win_pkgdata_flags -f)

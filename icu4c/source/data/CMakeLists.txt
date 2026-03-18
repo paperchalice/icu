@@ -64,7 +64,8 @@ if(NOT ICU_WITH_DATA_PACKAGING STREQUAL "archive")
   )
 else()
   install(FILES
-    out/tmp/${ICUPKG}.dat
-    COMPONENT RUNTIME
+    ${CMAKE_CURRENT_LIST_DIR}/out/tmp/${ICUPKG}.dat
+    COMPONENT Runtime
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/icu${ICU_WITH_LIBRARY_SUFFIX}/${PROJECT_VERSION}
   )
 endif()

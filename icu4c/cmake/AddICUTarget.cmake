@@ -63,6 +63,12 @@ function(add_icu_target type name)
     )
   endif()
 
+  target_compile_definitions(${name}
+    PRIVATE
+    U_ALL_IMPLEMENTATION
+    U_ATTRIBUTE_DEPRECATED=
+  )
+
   # MSVC
   block()
 

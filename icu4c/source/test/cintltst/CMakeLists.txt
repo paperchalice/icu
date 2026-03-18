@@ -1,3 +1,5 @@
+include(CheckLibraryExists)
+
 add_icu_test(cintltst)
 target_sources(cintltst
   PRIVATE
@@ -92,9 +94,12 @@ target_sources(cintltst
   utmstest.c
   utransts.c
 )
+
+check_library_exists(m exp "" HAVE_LIBM)
+
 target_link_libraries(cintltst
   PRIVATE
-  ctestfw tu
+  ctestfw tu $<$<BOOL:${HAVE_LIBM}>:m>
 )
 add_dependencies(cintltst
   testdata
