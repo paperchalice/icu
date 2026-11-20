@@ -15,7 +15,7 @@ import sys
 from . import *
 from .comment_stripper import CommentStripper
 from .request_types import CopyRequest
-from .renderers import makefile, common_exec
+from .renderers import makefile, cmake, common_exec
 from . import filtration, utils
 
 flag_parser = argparse.ArgumentParser(
@@ -63,7 +63,7 @@ arg_group_required = flag_parser.add_argument_group("required arguments")
 arg_group_required.add_argument(
     "--mode",
     help = "What to do with the generated rules.",
-    choices = ["gnumake", "unix-exec", "windows-exec", "bazel-exec"],
+    choices = ["gnumake", "cmake", "unix-exec", "windows-exec", "bazel-exec"],
     required = True
 )
 
@@ -278,6 +278,18 @@ def main(argv):
         }
         common["FILTERS_DIR"] = config.filter_dir
         common["CWD_DIR"] = os.getcwd()
+    elif args.mode == "cmake":
+        cmake_vars = {
+        }
+        common = {
+            "SRC_DIR": "${CMAKE_CURRENT_LIST_DIR}",
+            "IN_DIR": "${CMAKE_CURRENT_LIST_DIR}",
+            "OUT_DIR": "${ICUDATA_OUT_DIR}",
+            "TMP_DIR": "${ICUDATA_TMP_DIR}",
+            "ICUDATA_CHAR": "${ICUDATA_CHAR}",
+            "LIBRARY_DATA_DIR": "${LIBRARY_DATA_DIR}",
+            "INDEX_NAME": "res_index",
+        }
     else:
         makefile_vars = None
         common = {
@@ -322,6 +334,13 @@ def main(argv):
             build_dirs,
             requests,
             makefile_vars,
+            common_vars = common
+        ))
+    elif args.mode == "cmake":
+        print(cmake.get_cmake_rules(
+            build_dirs,
+            requests,
+            cmake_vars,
             common_vars = common
         ))
     elif args.mode == "windows-exec":

@@ -1,0 +1,3 @@
+add_icu_test(testmap)
+target_sources(testmap PRIVATE testmap.c)
+target_link_libraries(testmap PRIVATE uc)

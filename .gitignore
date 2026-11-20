@@ -80,6 +80,7 @@ ipch
 pkgdata.inc
 pkgdataMakefile
 rules.mk
+rules.cmake
 .DS_Store
 .flattened-pom.xml
 dependency-reduced-pom.xml

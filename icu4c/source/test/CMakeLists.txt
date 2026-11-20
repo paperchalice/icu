@@ -1,0 +1,10 @@
+if(NOT BUILD_TESTING)
+    return()
+endif()
+
+add_subdirectory(cintltst)
+add_subdirectory(intltest)
+add_subdirectory(iotest)
+add_subdirectory(testdata)
+add_subdirectory(testmap)
+add_subdirectory(thaitest)
